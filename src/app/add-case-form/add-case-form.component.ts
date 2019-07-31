@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CaseService } from '../case.service';
 import { Case } from '../case';
 
 @Component({
@@ -16,7 +16,10 @@ export class AddCaseFormComponent implements OnInit {
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() { 
+    this.submitted = true;
+    this._caseService.submitCase(); 
+  }
 
   newCase() {
     this.model = new Case(1, '', '', '');
@@ -24,7 +27,7 @@ export class AddCaseFormComponent implements OnInit {
 
   get diagnostic() { return JSON.stringify(this.model); }
 
-  constructor() { }
+  constructor(private _caseService: CaseService) { }
 
   ngOnInit() {
   }
