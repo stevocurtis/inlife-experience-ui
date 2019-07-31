@@ -1,0 +1,29 @@
+
+<div class="container">
+    <h1>Add Case Form</h1>
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+        {{diagnostic}}
+        <div class="form-group">
+            <label for="shortDescription">Short Description</label>
+            <input type="text" class="form-control" id="shortDescription" required [(ngModel)]="model.shortDescription" name="shortDescription" #name="ngModel">
+            <div [hidden]="shortDescription.valid || shortDescription.pristine" class="alert alert-danger">
+                A short description of the case is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Channel">Channel</label>
+            <input type="text" class="form-control" id="channel" required [(ngModel)]="model.channel" name="channel">
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Priority</label>
+            <select class="form-control" id="priority" required [(ngModel)]="model.priority" name="priority">
+                <option *ngFor="let priority of priorities" [value]="priority">{{priority}}</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!addCaseForm.form.valid">Submit</button>
+        <button type="button" class="btn btn-default" (click)="newCase(); addCaseForm.reset()">New Case</button>
+    </form>
