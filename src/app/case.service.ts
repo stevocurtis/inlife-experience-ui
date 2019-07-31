@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Case } from './case';
 
 const httpOptions = {
@@ -14,10 +14,16 @@ const server = 'http://xxx';
 })
 export class CaseService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  submitCase() {
-      let body = JSON.stringify({ short_description: "From app", channel: "Web", priority: "2 - Low" });
-      return this.http.post(server + 'digico-aws-test/snow/case', body, httpOptions);
+  submitCase(theCase: Case): Observable<Case> {
+
+    console.log(theCase);
+    return this.http.post<Case>('http://localhost:3000/case/create', theCase, httpOptions);
+
+  console.log('In submit case');
+  //    let body = JSON.stringify({ short_description: "From app", channel: "Web", priority: "2 - Low" });
+    //  console.log(body);
+      //return this.http.post('http://localhost:3000/case/create', body, httpOptions);
   }
 }

@@ -16,9 +16,10 @@ export class AddCaseFormComponent implements OnInit {
 
   submitted = false;
 
-  onSubmit() { 
+  onSubmit() {
+  console.log('hello');
     this.submitted = true;
-    this._caseService.submitCase(); 
+    this._caseService.submitCase(this.model).subscribe();
   }
 
   newCase() {

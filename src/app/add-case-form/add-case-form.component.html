@@ -6,7 +6,7 @@
         {{diagnostic}}
         <div class="form-group">
             <label for="shortDescription">Short Description</label>
-            <input type="text" class="form-control" id="shortDescription" required [(ngModel)]="model.shortDescription" name="shortDescription" #name="ngModel">
+            <input type="text" class="form-control" id="shortDescription" required [(ngModel)]="model.short_description" name="shortDescription" #name="ngModel">
             <div [hidden]="shortDescription.valid || shortDescription.pristine" class="alert alert-danger">
                 A short description of the case is required
             </div>
