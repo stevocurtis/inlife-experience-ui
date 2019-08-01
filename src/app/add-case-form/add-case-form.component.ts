@@ -11,8 +11,10 @@ import { Case } from '../case';
 export class AddCaseFormComponent implements OnInit {
 
   priorities = [ '2 - Low', '3 - Moderate' ];
+  impacts = [ '1 - High', '2 - Medium', '3 - Low'];
+  categories = [ 'Question', 'Issue', 'Feature', 'Feedback', 'Services Request'];
 
-  model = new Case(1, 'This is a case from an angular app', 'Web', this.priorities[1] );
+  model = new Case(1, 'Enter a short description', 'Web',  this.priorities[1],  'Sarah Smith', 'Protostar', this.impacts[2], this.categories[0], 'New' );
 
   submitted = false;
 
@@ -23,7 +25,7 @@ export class AddCaseFormComponent implements OnInit {
   }
 
   newCase() {
-    this.model = new Case(1, '', '', '');
+    this.model = new Case(1, '', '', '3 - Moderate', '', '', '', '', 'New');
   }
 
   get diagnostic() { return JSON.stringify(this.model); }

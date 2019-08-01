@@ -1,6 +1,6 @@
 
 <div class="container">
-    <h1>Add Case Form</h1>
+    <h1>Raise a customer case</h1>
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
 
         {{diagnostic}}
@@ -13,16 +13,45 @@
         </div>
 
         <div class="form-group">
+            <label for="account">Account</label>
+            <input type="text" class="form-control" id="account" required [(ngModel)]="model.account" name="account">
+        </div>
+
+        <div class="form-group">
+            <label for="contact">Contact</label>
+            <input type="text" class="form-control" id="contact" required [(ngModel)]="model.contact" name="contact">
+        </div>
+
+        <div class="form-group">
             <label for="Channel">Channel</label>
             <input type="text" class="form-control" id="channel" required [(ngModel)]="model.channel" name="channel">
         </div>
 
         <div class="form-group">
-            <label for="priority">Priority</label>
-            <select class="form-control" id="priority" required [(ngModel)]="model.priority" name="priority">
-                <option *ngFor="let priority of priorities" [value]="priority">{{priority}}</option>
+            <label for="impact">Customer Impact</label>
+            <select class="form-control" id="impact" required [(ngModel)]="model.impact" name="impact">
+                <option *ngFor="let impact of impacts" [value]="impact">{{impact}}</option>
             </select>
         </div>
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category" required [(ngModel)]="model.category" name="category">
+                <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+            </select>
+        </div>
+
+        <!-- div class="form-group">
+            <label for="priority">Priority</label>
+            <select class="form-control" id="priority" required [(ngModel)]="model.priority" name="priority" hidden="true">
+                <option *ngFor="let priority of priorities" [value]="priority">{{priority}}</option>
+            </select>
+        </div -->
+
+        <!-- div class="form-group">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" required [(ngModel)]="model.state" name="state">
+        </div-->
 
         <button type="submit" class="btn btn-success" [disabled]="!addCaseForm.form.valid">Submit</button>
         <button type="button" class="btn btn-default" (click)="newCase(); addCaseForm.reset()">New Case</button>
