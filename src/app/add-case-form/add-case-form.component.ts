@@ -26,6 +26,7 @@ export class AddCaseFormComponent implements OnInit {
 
   newCase() {
     this.model = new Case(1, '', '', '3 - Moderate', '', '', '', '', 'New');
+    this.submitted = false;
   }
 
   get diagnostic() { return JSON.stringify(this.model); }

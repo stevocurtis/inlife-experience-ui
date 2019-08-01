@@ -1,6 +1,9 @@
 
 <div class="container">
-    <h2>Raise a customers case with BT</h2>
+    <div class="alert alert-success" role="alert" [hidden]="!submitted">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    </div>
+    <h2>Raise a customer case with BT</h2>
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
 
         <!--{{diagnostic}}-->
