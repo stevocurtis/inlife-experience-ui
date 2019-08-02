@@ -7,7 +7,6 @@
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
 
         <!--{{diagnostic}}-->
-        {{diagnostic}}
         <div class="form-group">
             <label for="shortDescription">Short Description</label>
             <input type="text" class="form-control" id="shortDescription" required [(ngModel)]="model.short_description" name="shortDescription" #name="ngModel">
