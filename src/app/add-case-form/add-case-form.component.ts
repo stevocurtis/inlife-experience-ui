@@ -14,23 +14,25 @@ export class AddCaseFormComponent implements OnInit {
   impacts = [ '1 - High', '2 - Medium', '3 - Low'];
   categories = [ 'Question', 'Issue', 'Feature', 'Feedback', 'Services Request'];
   channels = ['Web', 'Phone', 'Email', 'Chat', 'Social', 'Community'];
-  model = new Case(1, '', 'Web',  this.priorities[1],  'Sarah Smith', 'Protostar', this.impacts[2], this.categories[0], 'New' );
+  model = new Case(1, '', 'Web',  this.priorities[1],  'Sarah Smith', 'Protostar', this.impacts[2], this.categories[0], 'New', '' );
   valid = false;
   submitted = false;
 
   onSubmit() {
     this.submitted = true;
-    this._caseService.submitCase(this.model).subscribe();
-    //this._caseService.submitCase(this.model).subscribe( res => {
-    //  console.log("result!!" + JSON.stringify(res));
-    //  if (res) {
-    //    //let parsedResponse = JSON.parse(res);
-    //  }
-    //});
+    //this._caseService.submitCase(this.model).subscribe();
+    this._caseService.submitCase(this.model).subscribe( res => {
+      console.log("result!!" + JSON.stringify(res));
+      this.model.case_number = res.case_number;
+      console.log("raw case no " + res.case_number);
+      if (res) {
+        //let parsedResponse = JSON.parse(res);
+      }
+    });
   }
 
   newCase() {
-    this.model = new Case(1, '', '', '3 - Moderate', '', '', '', '', 'New');
+    this.model = new Case(1, '', 'Web', '3 - Moderate', 'Sarah Smith', 'Protostar', '', '', 'New', '');
     this.submitted = false;
   }
 

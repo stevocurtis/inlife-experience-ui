@@ -1,7 +1,7 @@
 
 <div class="container">
     <div class="alert alert-success" role="alert" [hidden]="!submitted">
-        <strong>Done!</strong> Your case is submitted to BT and will be picked up shortly.
+        <strong>Done!</strong> Your case {{model.case_number}} is submitted to BT and will be picked up shortly.
     </div>
     <h2>Raise a customer case with BT</h2>
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
@@ -31,10 +31,10 @@
         </div-->
         <div class="form-group">
                 <label for="channel">Channel</label>
-                <select class="form-control" id="channel" required [(ngModel)]="model.channel" name="channel">
+                <select class="form-control" id="channel" required [(ngModel)]="model.contact_type" name="contact_type">
                     <option *ngFor="let channel of channels" [value]="channel">{{channel}}</option>
                 </select>
-                <div [hidden]="channel.valid || channel.pristine" class="alert alert-info">
+                <div [hidden]="contact_type.valid || contact_type.pristine" class="alert alert-info">
                     Select the channel through which the customer is raising the case
                 </div>
             </div>
