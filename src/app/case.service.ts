@@ -19,7 +19,7 @@ export class CaseService {
   submitCase(theCase: Case): Observable<Case> {
 
     console.log(theCase);
-    return this.http.post<Case>('http://localhost:3000/case/create', theCase, httpOptions);
+    return this.http.post<any>('http://localhost:3000/case/create', theCase, httpOptions);
 
   console.log('In submit case');
   //    let body = JSON.stringify({ short_description: "From app", channel: "Web", priority: "2 - Low" });
